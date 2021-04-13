@@ -1,7 +1,7 @@
 <template>
     <header class="flex justify-between place-items-center">
-        <div>
-        <img class="logo" src="../../public/images/covid-desc-1" width="400">
+        <div class="flex justify-center">
+        <img class="logo" src="../../public/images/covid-desc-1.jpg" width="80">
         </div>
         <div class="space-x-10">
         <router-link to="/" class="inline-block">Home</router-link>
@@ -16,10 +16,10 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    background-color:#00c33e;
+    background-color:rgb(0, 153, 255);
     color: white;
 }
 header{
-    padding: 10px 5%;
+    padding: 8px 5%;
 }
 </style>
