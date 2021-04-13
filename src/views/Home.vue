@@ -25,6 +25,23 @@
               </p>
             </base-card>
 
+             <base-card>
+              <label class="label" for="name">อายุของคุณ:</label>
+
+              <input
+                class="input"
+                :class="{ 'bg-red-50': invalidAgeInput }"
+                id="age"
+                type="text"
+                v-model.trim="enteredAge"
+                @blur="validateAge"
+              />
+
+              <p v-if="invalidAgeInput" class="text-red-500">
+                โปรดระบุอายุของคุณ!
+              </p>
+            </base-card>
+
             <base-card>
               <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
 
@@ -33,7 +50,7 @@
                   type="radio"
                   name="answer"
                   id="answer-yes"
-                  value="yes"
+                  value="Yes"
                   v-model="answer"
                 />
                 <label class="label" for="answer-yes">Yes</label>
@@ -44,7 +61,7 @@
                   type="radio"
                   name="answer"
                   id="answer-no"
-                  value="no"
+                  value="No"
                   v-model="answer"
                 />
                 <label class="label" for="answer-no">No</label>
@@ -63,7 +80,7 @@
                   type="radio"
                   name="answer1"
                   id="answer-yes1"
-                  value="yes"
+                  value="Yes"
                   v-model="answer1"
                 />
                 <label class="label" for="answer-yes1">Yes</label>
@@ -74,7 +91,7 @@
                   type="radio"
                   name="answer1"
                   id="answer-no1"
-                  value="no"
+                  value="No"
                   v-model="answer1"
                 />
                 <label class="label" for="answer-no1">No</label>
@@ -95,14 +112,17 @@
         <base-card>
           <ul v-for="survey in surveyResults" :key="survey.id">
             <li>
-              <span>{{ survey.name }}</span> rating the learning experience
-              <span> {{ survey.answer }}</span>
+              <span>{{ survey.name }}</span> 
+              อายุของคุณคือ
+              <span>{{ survey.age }}</span>
+              คำตอบของคุณคือ
+              <span> {{ survey.answer }}</span>,
               <span> {{ survey.answer1 }}</span>
               <button @click="showData(survey)" class="bg-green-500 m-1">
-                <img src="@/assets/edit.svg" alt="" />
+                <img src="@/assets/edit.png" alt="" />
               </button>
               <button @click="deleteSurvey(survey.id)" class="bg-red-500 m-1">
-                <img src="@/assets/delete.svg" alt="" />
+                <img src="@/assets/delete.png" alt="" />
               </button>
             </li>
           </ul>
@@ -125,9 +145,11 @@ export default {
     return {
       isEdit: false,
       editId: '',
-      url: 'http://localhost:5000/surveyResults',
+      url: 'http://localhost:3000/surveyResults',
       enteredName: '',
       invalidNameInput: false,
+      enteredAge: '',
+      invalidAgeInput: false,
       answer: null,
       invalidAnswerInput: false,
       answer1: null,
@@ -138,33 +160,39 @@ export default {
   methods: {
     submitForm() {
       this.invalidNameInput = this.enteredName === '' ? true : false
+      this.invalidAgeInput = this.enteredAge === '' ? true : false
       this.invalidAnswerInput = this.answer === null ? true : false
       this.invalidAnswerInput1 = this.answer1 === null ? true : false
 
       console.log(`name value: ${this.enteredName}`)
       console.log(`invalid name: ${this.invalidNameInput}`)
+      console.log(`age value: ${this.enteredAge}`)
+      console.log(`invalid age: ${this.invalidAgeInput}`)
       console.log(`answer value: ${this.answer}`)
       console.log(`invalid answer: ${this.invalidAnswerInput}`)
-       console.log(`answer1 value: ${this.answer1}`)
+      console.log(`answer1 value: ${this.answer1}`)
       console.log(`invalid1 answer: ${this.invalidAnswerInput1}`)
 
-      if (this.enteredName !== '' && this.answer !== null && this.answer1 !== null) {
+      if (this.enteredName !== ''&& this.enteredAge !== '' && this.answer !== null && this.answer1 !== null) {
         if (this.isEdit) {
           this.editSurvey({
             id: this.editId,
             name: this.enteredName,
+            age: this.enteredAge,
             answer: this.answer,
             answer1: this.answer1
           })
         } else {
           this.addNewSurvey({
             name: this.enteredName,
+            age: this.enteredAge,
             answer: this.answer,
             answer1: this.answer1
           })
         }
       }
       this.enteredName = ''
+      this.enteredAge = ''
       this.answer = null
       this.answer1 = null
       
@@ -174,11 +202,16 @@ export default {
       this.invalidNameInput = this.enteredName === '' ? true : false
       console.log(`name: ${this.invalidNameInput}`)
     },
+    validateAge() {
+      this.invalidNameInput = this.enteredName === '' ? true : false
+      console.log(`name: ${this.invalidAgeInput}`)
+    },
 
     showData(oldSurvey) {
       this.isEdit = true
       this.editId = oldSurvey.id
       this.enteredName = oldSurvey.name
+      this.enteredAge = oldSurvey.age
       this.answer = oldSurvey.answer
       this.answer1 = oldSurvey.answer1
     },
@@ -191,6 +224,7 @@ export default {
           },
           body: JSON.stringify({
             name: editingSurvey.name,
+            age: editingSurvey.age,
             answer: editingSurvey.answer,
             answer1: editingSurvey.answer1
           })
@@ -198,13 +232,14 @@ export default {
         const data = await res.json()
         this.surveyResults = this.surveyResults.map((survey) =>
           survey.id === editingSurvey.id
-            ? { ...survey, name: data.name, answer: data.answer ,answer1: data.answer1}
+            ? { ...survey, name: data.name, age: data.age, answer: data.answer ,answer1: data.answer1}
             : survey
         )
 
         this.isEdit = false
         this.editId = ''
         this.enteredName = ''
+        this.enteredAge = ''
         this.answer = null
         this.answer1 = null
       } catch (error) {
@@ -241,6 +276,7 @@ export default {
           },
           body: JSON.stringify({
             name: newSurvey.name,
+            age: newSurvey.age,
             answer: newSurvey.answer,
             answer1: newSurvey.answer1
           })

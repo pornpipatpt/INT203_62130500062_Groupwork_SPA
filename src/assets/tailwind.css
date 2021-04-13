@@ -24,7 +24,7 @@
 }
 
 .input {
-  @apply border border-gray-500 rounded-md  p-1;
+  @apply border border-gray-500 rounded-md  p-1 ;
 }
 
 .label {

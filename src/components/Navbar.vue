@@ -3,9 +3,10 @@
         <div class="flex justify-center">
         <img class="logo" src="../../public/images/covid-desc-1.jpg" width="80">
         </div>
+         <p class=" pb-16">Covid-19 Survey</p>
         <div class="space-x-10">
         <router-link to="/" class="inline-block">Home</router-link>
-        <router-link to="/about" class="inline-block">AboutUs</router-link>
+        <router-link to="/about" class="inline-block">About Covid-19</router-link>
         </div>
     </header>
 </template>
