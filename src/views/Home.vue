@@ -1,6 +1,7 @@
 <template>
  <nav-bar :navber="navbar"/> 
- <p class="font-extralight text text-2xl text-red-300">แบบฟอร์มบันทึกรายละเอียดข้อมูลและความเสี่ยง</p>
+ <blackground>
+ <p class="font-extralight   text-black text-center text-3xl ">Record form detailing information and risks</p>
  <div class="w-screen h-screen">
     <div class="w-full h-full md:w-1/2">
       
@@ -130,16 +131,17 @@
       </div>
     </div>
   </div>
+  </blackground>
 </template>
 
 <script>
-
+import Blackground from '@/components/Blackground.vue'
 
 
 export default {
   name: 'Home',
   components: {
-   
+   Blackground
   },
  data() {
     return {
