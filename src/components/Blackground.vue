@@ -1,8 +1,6 @@
 <template>
-  <body class="bg-blue-200">
-
-
-      <slot></slot>
+  <body class="bg-blue-200 h-full" >
+ <slot></slot>
   </body>
     
     </template>

@@ -1,11 +1,14 @@
 {
   "surveyResults": [
     {
-      "name": "boatbugza",
-      "age": "12",
-      "answer": "Yes",
+      "name": "boat",
+      "age": "24",
+      "province": "ระนอง",
+      "answer": "No",
       "answer1": "Yes",
-      "id": 1
+      "answer2": "Yes",
+      "answer3": "Yes",
+      "id": 2
     }
   ]
 }

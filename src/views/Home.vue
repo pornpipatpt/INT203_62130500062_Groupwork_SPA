@@ -1,298 +1,438 @@
 <template>
- <nav-bar :navber="navbar"/> 
- <blackground>
- <p class="font-extralight   text-black text-center text-3xl ">Record form detailing information and risks</p>
- <div class="w-screen h-screen">
-    <div class="w-full h-full md:w-1/2">
-      
+  <nav-bar :navber="navbar" />
+  <blackground>
+    <p class="font-extralight   text-black text-center text-3xl ">
+      Record form detailing information and risks
+    </p>
+    <div class="w-screen h-full">
+      <div class="w-full h-full md:w-1/2">
+        <div class="container">
+          <div class="survey-container">
+            <form @submit.prevent="submitForm">
+              <base-card>
+                <label class="label" for="name">ชื่อของคุณ:</label>
 
-      <div class="container">
-        <div class="survey-container">
-          <form @submit.prevent="submitForm">
-            <base-card>
-              <label class="label" for="name">ชื่อของคุณ:</label>
-
-              <input
-                class="input"
-                :class="{ 'bg-red-50': invalidNameInput }"
-                id="name"
-                type="text"
-                v-model.trim="enteredName"
-                @blur="validateName"
-              />
-
-              <p v-if="invalidNameInput" class="text-red-500">
-                โปรดระบุชื่อของคุณ!
-              </p>
-            </base-card>
-
-             <base-card>
-              <label class="label" for="name">อายุของคุณ:</label>
-
-              <input
-                class="input"
-                :class="{ 'bg-red-50': invalidAgeInput }"
-                id="age"
-                type="text"
-                v-model.trim="enteredAge"
-                @blur="validateAge"
-              />
-
-              <p v-if="invalidAgeInput" class="text-red-500">
-                โปรดระบุอายุของคุณ!
-              </p>
-            </base-card>
-
-            <base-card>
-              <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
-
-              <div>
                 <input
-                  type="radio"
-                  name="answer"
-                  id="answer-yes"
-                  value="Yes"
-                  v-model="answer"
+                  class="input"
+                  :class="{ 'bg-red-50': invalidNameInput }"
+                  id="name"
+                  type="text"
+                  v-model.trim="enteredName"
+                  @blur="validateName"
                 />
-                <label class="label" for="answer-yes">Yes</label>
-              </div>
 
-              <div>
+                <p v-if="invalidNameInput" class="text-red-500">
+                  โปรดระบุชื่อของคุณ!
+                </p>
+              </base-card>
+
+              <base-card>
+                <label class="label" for="name">อายุของคุณ:</label>
+
                 <input
-                  type="radio"
-                  name="answer"
-                  id="answer-no"
-                  value="No"
-                  v-model="answer"
+                  class="input"
+                  :class="{ 'bg-red-50': invalidAgeInput }"
+                  id="age"
+                  type="text"
+                  v-model.trim="enteredAge"
+                  @blur="validateAge"
                 />
-                <label class="label" for="answer-no">No</label>
-              </div>
 
-              
-              <p v-if="invalidaAswerInput" class="text-red-500">
-               โปรดระบุคำตอบของคุณ!
-              </p>
-            </base-card>
-            <base-card>
-              <h2 class="heading">คุณมีอาการปวดหัว ตัวร้อน อาเจียน หรือไม่</h2>
+                <p v-if="invalidAgeInput" class="text-red-500">
+                  โปรดระบุอายุของคุณ!
+                </p>
+              </base-card>
 
-              <div>
+              <base-card>
+                <label class="label" for="name">จังหวัดที่คุณอยู่:</label>
+
                 <input
-                  type="radio"
-                  name="answer1"
-                  id="answer-yes1"
-                  value="Yes"
-                  v-model="answer1"
+                  class="input"
+                  :class="{ 'bg-red-50': invalidProvinceInput }"
+                  id="province"
+                  type="text"
+                  v-model.trim="enteredProvince"
+                  @blur="validateProvince"
                 />
-                <label class="label" for="answer-yes1">Yes</label>
-              </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="answer1"
-                  id="answer-no1"
-                  value="No"
-                  v-model="answer1"
-                />
-                <label class="label" for="answer-no1">No</label>
-              </div>
+                <p v-if="invalidProvinceInput" class="text-red-500">
+                  โปรดระบุจังหวัดของคุณ!
+                </p>
+              </base-card>
 
-              
-              <p v-if="invalidaAswerInput1" class="text-red-500">
-                โปรดระบุคำตอบของคุณ!
-              </p>
-            </base-card>
+              <base-card>
+                <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
 
+                <div>
+                  <input
+                    type="radio"
+                    name="answer"
+                    id="answer-yes"
+                    value="Yes"
+                    v-model="answer"
+                  />
+                  <label class="label" for="answer-yes">Yes</label>
+                </div>
 
-            <button class="btn">
-              Submit
-            </button>
-          </form>
+                <div>
+                  <input
+                    type="radio"
+                    name="answer"
+                    id="answer-no"
+                    value="No"
+                    v-model="answer"
+                  />
+                  <label class="label" for="answer-no">No</label>
+                </div>
+
+                <p v-if="invalidaAswerInput" class="text-red-500">
+                  โปรดระบุคำตอบของคุณ!
+                </p>
+              </base-card>
+              <base-card>
+                <h2 class="heading">
+                  คุณมีอาการปวดหัว ตัวร้อน อาเจียน หรือไม่
+                </h2>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer1"
+                    id="answer-yes1"
+                    value="Yes"
+                    v-model="answer1"
+                  />
+                  <label class="label" for="answer-yes1">Yes</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer1"
+                    id="answer-no1"
+                    value="No"
+                    v-model="answer1"
+                  />
+                  <label class="label" for="answer-no1">No</label>
+                </div>
+
+                <p v-if="invalidaAswerInput1" class="text-red-500">
+                  โปรดระบุคำตอบของคุณ!
+                </p>
+              </base-card>
+
+              <base-card>
+                <h2 class="heading">
+                  คุณสัมผัสใกล้ชิดกับประชาชนที่มาจากพื้นที่ที่มีรายงานการระบาดต่อเนื่องของ(COVID-19)
+                  หรือไม่ ?
+                </h2>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    id="answer-yes2"
+                    value="Yes"
+                    v-model="answer2"
+                  />
+                  <label class="label" for="answer-yes2">Yes</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    id="answer-no2"
+                    value="No"
+                    v-model="answer2"
+                  />
+                  <label class="label" for="answer-no2">No</label>
+                </div>
+
+                <p v-if="invalidaAswerInput2" class="text-red-500">
+                  โปรดระบุคำตอบของคุณ!
+                </p>
+              </base-card>
+
+              <base-card>
+                <h2 class="heading">
+                  คุณข้าร่วมกิจกรรมที่มีผู้ชุมนุมเกิน 100 คน ในช่วงเวลา 14 วัน ก่อนหน้านี้ หรือไม่ ?
+                </h2>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer3"
+                    id="answer-yes3"
+                    value="Yes"
+                    v-model="answer3"
+                  />
+                  <label class="label" for="answer-yes3">Yes</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="answer3"
+                    id="answer-no3"
+                    value="No"
+                    v-model="answer3"
+                  />
+                  <label class="label" for="answer-no3">No</label>
+                </div>
+
+                <p v-if="invalidaAswerInput3" class="text-red-500">
+                  โปรดระบุคำตอบของคุณ!
+                </p>
+              </base-card>
+
+              <button class="btn">
+                Submit
+              </button>
+            </form>
+          </div>
+          <base-card>
+            <ul v-for="survey in surveyResults" :key="survey.id">
+              <li>
+                <span>{{ survey.name }}</span>
+                อายุของคุณคือ
+                <span>{{ survey.age }}</span>
+                จังหวัดที่คุณอยู่คือ
+                <span>{{ survey.province }}</span>
+                คำตอบของคุณคือ
+                <span> {{ survey.answer }}</span>,
+                <span> {{ survey.answer1 }}</span>,
+                <span> {{ survey.answer2 }}</span>,
+                <span> {{ survey.answer3 }}</span>
+                <button @click="showData(survey)" class="bg-green-500 m-1">
+                  <img src="@/assets/edit.png" alt="" />
+                </button>
+                <button @click="deleteSurvey(survey.id)" class="bg-red-500 m-1">
+                  <img src="@/assets/delete.png" alt="" />
+                </button>
+              </li>
+            </ul>
+          </base-card>
         </div>
-        <base-card>
-          <ul v-for="survey in surveyResults" :key="survey.id">
-            <li>
-              <span>{{ survey.name }}</span> 
-              อายุของคุณคือ
-              <span>{{ survey.age }}</span>
-              คำตอบของคุณคือ
-              <span> {{ survey.answer }}</span>,
-              <span> {{ survey.answer1 }}</span>
-              <button @click="showData(survey)" class="bg-green-500 m-1">
-                <img src="@/assets/edit.png" alt="" />
-              </button>
-              <button @click="deleteSurvey(survey.id)" class="bg-red-500 m-1">
-                <img src="@/assets/delete.png" alt="" />
-              </button>
-            </li>
-          </ul>
-        </base-card>
       </div>
     </div>
-  </div>
   </blackground>
 </template>
 
 <script>
-import Blackground from '@/components/Blackground.vue'
-
+import Blackground from "@/components/Blackground.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-   Blackground
+    Blackground,
   },
- data() {
+  data() {
     return {
       isEdit: false,
-      editId: '',
-      url: 'http://localhost:3000/surveyResults',
-      enteredName: '',
+      editId: "",
+      url: "http://localhost:3000/surveyResults",
+      enteredName: "",
       invalidNameInput: false,
-      enteredAge: '',
+      enteredAge: "",
       invalidAgeInput: false,
+      enteredProvince: "",
+      invalidProvinceInput: false,
       answer: null,
       invalidAnswerInput: false,
       answer1: null,
       invalidAnswerInput1: false,
-      surveyResults: []
-    }
+      answer2: null,
+      invalidAnswerInput2: false,
+      answer3: null,
+      invalidAnswerInput3: false,
+      surveyResults: [],
+    };
   },
   methods: {
     submitForm() {
-      this.invalidNameInput = this.enteredName === '' ? true : false
-      this.invalidAgeInput = this.enteredAge === '' ? true : false
-      this.invalidAnswerInput = this.answer === null ? true : false
-      this.invalidAnswerInput1 = this.answer1 === null ? true : false
+      this.invalidNameInput = this.enteredName === "" ? true : false;
+      this.invalidAgeInput = this.enteredAge === "" ? true : false;
+      this.invalidProvinceInput = this.enteredProvince === "" ? true : false;
+      this.invalidAnswerInput = this.answer === null ? true : false;
+      this.invalidAnswerInput1 = this.answer1 === null ? true : false;
+      this.invalidAnswerInput2 = this.answer2 === null ? true : false;
+      this.invalidAnswerInput3 = this.answer3 === null ? true : false;
 
-      console.log(`name value: ${this.enteredName}`)
-      console.log(`invalid name: ${this.invalidNameInput}`)
-      console.log(`age value: ${this.enteredAge}`)
-      console.log(`invalid age: ${this.invalidAgeInput}`)
-      console.log(`answer value: ${this.answer}`)
-      console.log(`invalid answer: ${this.invalidAnswerInput}`)
-      console.log(`answer1 value: ${this.answer1}`)
-      console.log(`invalid1 answer: ${this.invalidAnswerInput1}`)
+      console.log(`name value: ${this.enteredName}`);
+      console.log(`invalid name: ${this.invalidNameInput}`);
+      console.log(`age value: ${this.enteredAge}`);
+      console.log(`invalid age: ${this.invalidAgeInput}`);
+      console.log(`province value: ${this.enteredProvince}`);
+      console.log(`invalid province: ${this.invalidProvinceInput}`);
+      console.log(`answer value: ${this.answer}`);
+      console.log(`invalid answer: ${this.invalidAnswerInput}`);
+      console.log(`answer1 value: ${this.answer1}`);
+      console.log(`invalid1 answer: ${this.invalidAnswerInput1}`);
+      console.log(`answer1 value: ${this.answer2}`);
+      console.log(`invalid1 answer: ${this.invalidAnswerInput2}`);
+      console.log(`answer1 value: ${this.answer3}`);
+      console.log(`invalid1 answer: ${this.invalidAnswerInput3}`);
 
-      if (this.enteredName !== ''&& this.enteredAge !== '' && this.answer !== null && this.answer1 !== null) {
+      if (
+        this.enteredName !== "" &&
+        this.enteredAge !== "" &&
+        this.enteredProvince !== "" &&
+        this.answer !== null &&
+        this.answer1 !== null &&
+        this.answer2 !== null &&
+        this.answer3 !== null 
+      ) {
         if (this.isEdit) {
           this.editSurvey({
             id: this.editId,
             name: this.enteredName,
             age: this.enteredAge,
+            province: this.enteredProvince,
             answer: this.answer,
-            answer1: this.answer1
-          })
+            answer1: this.answer1,
+            answer2: this.answer2,
+            answer3: this.answer3,
+          });
         } else {
           this.addNewSurvey({
             name: this.enteredName,
             age: this.enteredAge,
+            province: this.enteredProvince,
             answer: this.answer,
-            answer1: this.answer1
-          })
+            answer1: this.answer1,
+            answer2: this.answer2,
+            answer3: this.answer3,
+          });
         }
       }
-      this.enteredName = ''
-      this.enteredAge = ''
-      this.answer = null
-      this.answer1 = null
-      
+      this.enteredName = "";
+      this.enteredAge = "";
+      this.enteredProvince = "";
+      this.answer = null;
+      this.answer1 = null;
+      this.answer2 = null;
+      this.answer3 = null;
     },
 
     validateName() {
-      this.invalidNameInput = this.enteredName === '' ? true : false
-      console.log(`name: ${this.invalidNameInput}`)
+      this.invalidNameInput = this.enteredName === "" ? true : false;
+      console.log(`name: ${this.invalidNameInput}`);
     },
     validateAge() {
-      this.invalidNameInput = this.enteredName === '' ? true : false
-      console.log(`name: ${this.invalidAgeInput}`)
+      this.invalidAgeInput = this.enteredAge === "" ? true : false;
+      console.log(`name: ${this.invalidAgeInput}`);
+    },
+    validateProvince() {
+      this.invalidProvinceInput = this.enteredProvince === "" ? true : false;
+      console.log(`name: ${this.invalidProvinceInput}`);
     },
 
     showData(oldSurvey) {
-      this.isEdit = true
-      this.editId = oldSurvey.id
-      this.enteredName = oldSurvey.name
-      this.enteredAge = oldSurvey.age
-      this.answer = oldSurvey.answer
-      this.answer1 = oldSurvey.answer1
+      this.isEdit = true;
+      this.editId = oldSurvey.id;
+      this.enteredName = oldSurvey.name;
+      this.enteredAge = oldSurvey.age;
+      this.enteredProvince = oldSurvey.province;
+      this.answer = oldSurvey.answer;
+      this.answer1 = oldSurvey.answer1;
+      this.answer2 = oldSurvey.answer2;
+      this.answer3 = oldSurvey.answer3;
     },
     async editSurvey(editingSurvey) {
       try {
         const res = await fetch(`${this.url}/${editingSurvey.id}`, {
-          method: 'PUT',
+          method: "PUT",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
           body: JSON.stringify({
             name: editingSurvey.name,
             age: editingSurvey.age,
+            province: editingSurvey.province,
             answer: editingSurvey.answer,
-            answer1: editingSurvey.answer1
-          })
-        })
-        const data = await res.json()
+            answer1: editingSurvey.answer1,
+            answer2: editingSurvey.answer2,
+            answer3: editingSurvey.answer3,
+          }),
+        });
+        const data = await res.json();
         this.surveyResults = this.surveyResults.map((survey) =>
           survey.id === editingSurvey.id
-            ? { ...survey, name: data.name, age: data.age, answer: data.answer ,answer1: data.answer1}
+            ? {
+                ...survey,
+                name: data.name,
+                age: data.age,
+                province: data.province,
+                answer: data.answer,
+                answer1: data.answer1,
+                answer2: data.answer2,
+                answer3: data.answer3,
+              }
             : survey
-        )
+        );
 
-        this.isEdit = false
-        this.editId = ''
-        this.enteredName = ''
-        this.enteredAge = ''
-        this.answer = null
-        this.answer1 = null
+        this.isEdit = false;
+        this.editId = "";
+        this.enteredName = "";
+        this.enteredAge = "";
+        this.enteredProvince = "";
+        this.answer = null;
+        this.answer1 = null;
+        this.answer2 = null;
+        this.answer3 = null;
       } catch (error) {
-        console.log(`Could not edit! ${error}`)
+        console.log(`Could not edit! ${error}`);
       }
     },
     async getSurveyResult() {
       try {
-        const res = await fetch(this.url)
-        const data = await res.json()
-        return data
+        const res = await fetch(this.url);
+        const data = await res.json();
+        return data;
       } catch (error) {
-        console.log(`Could not get! ${error}`)
+        console.log(`Could not get! ${error}`);
       }
     },
     async deleteSurvey(deleteId) {
       try {
         await fetch(`${this.url}/${deleteId}`, {
-          method: 'DELETE'
-        })
+          method: "DELETE",
+        });
         this.surveyResults = this.surveyResults.filter(
           (survey) => survey.id !== deleteId
-        )
+        );
       } catch (error) {
-        console.log(`Could not delete! ${error}`)
+        console.log(`Could not delete! ${error}`);
       }
     },
     async addNewSurvey(newSurvey) {
       try {
         const res = await fetch(this.url, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
           body: JSON.stringify({
             name: newSurvey.name,
             age: newSurvey.age,
+            province: newSurvey.province,
             answer: newSurvey.answer,
-            answer1: newSurvey.answer1
-          })
-        })
-        const data = await res.json()
-        this.surveyResults = [...this.surveyResults, data]
+            answer1: newSurvey.answer1,
+            answer2: newSurvey.answer2,
+            answer3: newSurvey.answer3,
+          }),
+        });
+        const data = await res.json();
+        this.surveyResults = [...this.surveyResults, data];
       } catch (error) {
-        console.log(`Could not save! ${error}`)
+        console.log(`Could not save! ${error}`);
       }
-    }
+    },
   },
 
   async created() {
-    this.surveyResults = await this.getSurveyResult()
-  }
-}
+    this.surveyResults = await this.getSurveyResult();
+  },
+};
 </script>
