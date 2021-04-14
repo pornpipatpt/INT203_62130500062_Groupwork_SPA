@@ -4,11 +4,11 @@
       "name": "boat",
       "age": "24",
       "province": "ระนอง",
-      "answer": "No",
-      "answer1": "Yes",
-      "answer2": "Yes",
+      "answer": "Yes",
+      "answer1": "No",
+      "answer2": "No",
       "answer3": "Yes",
-      "id": 2
+      "id": 3
     }
   ]
 }

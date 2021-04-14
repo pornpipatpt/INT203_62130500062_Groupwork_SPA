@@ -9,7 +9,7 @@
         <div class="container">
           <div class="survey-container">
             <form @submit.prevent="submitForm">
-              <base-card>
+              <text-box>
                 <label class="label" for="name">ชื่อของคุณ:</label>
 
                 <input
@@ -24,9 +24,9 @@
                 <p v-if="invalidNameInput" class="text-red-500">
                   โปรดระบุชื่อของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
-              <base-card>
+              <text-box>
                 <label class="label" for="name">อายุของคุณ:</label>
 
                 <input
@@ -41,9 +41,9 @@
                 <p v-if="invalidAgeInput" class="text-red-500">
                   โปรดระบุอายุของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
-              <base-card>
+              <text-box>
                 <label class="label" for="name">จังหวัดที่คุณอยู่:</label>
 
                 <input
@@ -58,9 +58,9 @@
                 <p v-if="invalidProvinceInput" class="text-red-500">
                   โปรดระบุจังหวัดของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
-              <base-card>
+              <text-box>
                 <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
 
                 <div>
@@ -88,8 +88,8 @@
                 <p v-if="invalidaAswerInput" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
-              </base-card>
-              <base-card>
+              </text-box>
+              <text-box>
                 <h2 class="heading">
                   คุณมีอาการปวดหัว ตัวร้อน อาเจียน หรือไม่
                 </h2>
@@ -119,9 +119,9 @@
                 <p v-if="invalidaAswerInput1" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
-              <base-card>
+              <text-box>
                 <h2 class="heading">
                   คุณสัมผัสใกล้ชิดกับประชาชนที่มาจากพื้นที่ที่มีรายงานการระบาดต่อเนื่องของ(COVID-19)
                   หรือไม่ ?
@@ -152,9 +152,9 @@
                 <p v-if="invalidaAswerInput2" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
-              <base-card>
+              <text-box>
                 <h2 class="heading">
                   คุณข้าร่วมกิจกรรมที่มีผู้ชุมนุมเกิน 100 คน ในช่วงเวลา 14 วัน ก่อนหน้านี้ หรือไม่ ?
                 </h2>
@@ -184,14 +184,14 @@
                 <p v-if="invalidaAswerInput3" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
-              </base-card>
+              </text-box>
 
               <button class="btn">
                 Submit
               </button>
             </form>
           </div>
-          <base-card>
+          <text-box>
             <ul v-for="survey in surveyResults" :key="survey.id">
               <li>
                 <span>{{ survey.name }}</span>
@@ -212,7 +212,7 @@
                 </button>
               </li>
             </ul>
-          </base-card>
+          </text-box>
         </div>
       </div>
     </div>
