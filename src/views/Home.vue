@@ -85,7 +85,7 @@
                   <label class="label" for="answer-no">No</label>
                 </div>
 
-                <p v-if="invalidaAswerInput" class="text-red-500">
+                <p v-if="invalidAnswerInput" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
               </text-box>
@@ -116,7 +116,7 @@
                   <label class="label" for="answer-no1">No</label>
                 </div>
 
-                <p v-if="invalidaAswerInput1" class="text-red-500">
+                <p v-if="invalidAnswerInput1" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
               </text-box>
@@ -149,7 +149,7 @@
                   <label class="label" for="answer-no2">No</label>
                 </div>
 
-                <p v-if="invalidaAswerInput2" class="text-red-500">
+                <p v-if="invalidAnswerInput2" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
               </text-box>
@@ -181,7 +181,7 @@
                   <label class="label" for="answer-no3">No</label>
                 </div>
 
-                <p v-if="invalidaAswerInput3" class="text-red-500">
+                <p v-if="invalidAnswerInput3" class="text-red-500">
                   โปรดระบุคำตอบของคุณ!
                 </p>
               </text-box>
@@ -204,10 +204,10 @@
                 <span> {{ survey.answer1 }}</span>,
                 <span> {{ survey.answer2 }}</span>,
                 <span> {{ survey.answer3 }}</span>
-                <button @click="showData(survey)" class="bg-green-500 m-1">
+                <button @click="showData(survey)" class="bg-green-100 m-1">
                   <img src="@/assets/edit.png" alt="" />
                 </button>
-                <button @click="deleteSurvey(survey.id)" class="bg-red-500 m-1">
+                <button @click="deleteSurvey(survey.id)" class="bg-red-100 m-1">
                   <img src="@/assets/delete.png" alt="" />
                 </button>
               </li>

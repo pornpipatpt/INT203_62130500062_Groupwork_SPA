@@ -7,6 +7,7 @@
         <div class="space-x-10">
         <router-link to="/" class="inline-block">Home</router-link>
         <router-link to="/about" class="inline-block">About Covid-19</router-link>
+        <router-link to="/aboutus" class="inline-block">About Us</router-link>
         </div>
     </header>
 </template>
