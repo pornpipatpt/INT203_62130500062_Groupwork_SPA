@@ -204,10 +204,10 @@
                 <span> {{ survey.answer1 }}</span>,
                 <span> {{ survey.answer2 }}</span>,
                 <span> {{ survey.answer3 }}</span>
-                <button @click="showData(survey)" class="bg-green-100 m-1">
+                <button @click="showIfm(survey)" class="bg-green-100 m-1">
                   <img src="@/assets/edit.png" alt="" />
                 </button>
-                <button @click="deleteSurvey(survey.id)" class="bg-red-100 m-1">
+                <button @click="deleteIfm(survey.id)" class="bg-red-100 m-1">
                   <img src="@/assets/delete.png" alt="" />
                 </button>
               </li>
@@ -284,7 +284,7 @@ export default {
         this.answer3 !== null 
       ) {
         if (this.isEdit) {
-          this.editSurvey({
+          this.editIfm({
             id: this.editId,
             name: this.enteredName,
             age: this.enteredAge,
@@ -295,7 +295,7 @@ export default {
             answer3: this.answer3,
           });
         } else {
-          this.addNewSurvey({
+          this.addNewIfm({
             name: this.enteredName,
             age: this.enteredAge,
             province: this.enteredProvince,
@@ -328,37 +328,37 @@ export default {
       console.log(`name: ${this.invalidProvinceInput}`);
     },
 
-    showData(oldSurvey) {
+    showIfm(oldIfm) {
       this.isEdit = true;
-      this.editId = oldSurvey.id;
-      this.enteredName = oldSurvey.name;
-      this.enteredAge = oldSurvey.age;
-      this.enteredProvince = oldSurvey.province;
-      this.answer = oldSurvey.answer;
-      this.answer1 = oldSurvey.answer1;
-      this.answer2 = oldSurvey.answer2;
-      this.answer3 = oldSurvey.answer3;
+      this.editId = oldIfm.id;
+      this.enteredName = oldIfm.name;
+      this.enteredAge = oldIfm.age;
+      this.enteredProvince = oldIfm.province;
+      this.answer = oldIfm.answer;
+      this.answer1 = oldIfm.answer1;
+      this.answer2 = oldIfm.answer2;
+      this.answer3 = oldIfm.answer3;
     },
-    async editSurvey(editingSurvey) {
+    async editIfm(editingIfm) {
       try {
-        const res = await fetch(`${this.url}/${editingSurvey.id}`, {
+        const res = await fetch(`${this.url}/${editingIfm.id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
           },
           body: JSON.stringify({
-            name: editingSurvey.name,
-            age: editingSurvey.age,
-            province: editingSurvey.province,
-            answer: editingSurvey.answer,
-            answer1: editingSurvey.answer1,
-            answer2: editingSurvey.answer2,
-            answer3: editingSurvey.answer3,
+            name: editingIfm.name,
+            age: editingIfm.age,
+            province: editingIfm.province,
+            answer: editingIfm.answer,
+            answer1: editingIfm.answer1,
+            answer2: editingIfm.answer2,
+            answer3: editingIfm.answer3,
           }),
         });
         const data = await res.json();
         this.surveyResults = this.surveyResults.map((survey) =>
-          survey.id === editingSurvey.id
+          survey.id === editingIfm.id
             ? {
                 ...survey,
                 name: data.name,
@@ -385,7 +385,7 @@ export default {
         console.log(`Could not edit! ${error}`);
       }
     },
-    async getSurveyResult() {
+    async getIfmResult() {
       try {
         const res = await fetch(this.url);
         const data = await res.json();
@@ -394,7 +394,7 @@ export default {
         console.log(`Could not get! ${error}`);
       }
     },
-    async deleteSurvey(deleteId) {
+    async deleteIfm(deleteId) {
       try {
         await fetch(`${this.url}/${deleteId}`, {
           method: "DELETE",
@@ -406,7 +406,7 @@ export default {
         console.log(`Could not delete! ${error}`);
       }
     },
-    async addNewSurvey(newSurvey) {
+    async addNewIfm(newIfm) {
       try {
         const res = await fetch(this.url, {
           method: "POST",
@@ -414,13 +414,13 @@ export default {
             "content-type": "application/json",
           },
           body: JSON.stringify({
-            name: newSurvey.name,
-            age: newSurvey.age,
-            province: newSurvey.province,
-            answer: newSurvey.answer,
-            answer1: newSurvey.answer1,
-            answer2: newSurvey.answer2,
-            answer3: newSurvey.answer3,
+            name: newIfm.name,
+            age: newIfm.age,
+            province: newIfm.province,
+            answer: newIfm.answer,
+            answer1: newIfm.answer1,
+            answer2: newIfm.answer2,
+            answer3: newIfm.answer3,
           }),
         });
         const data = await res.json();
@@ -432,7 +432,7 @@ export default {
   },
 
   async created() {
-    this.surveyResults = await this.getSurveyResult();
+    this.surveyResults = await this.getIfmResult();
   },
 };
 </script>
