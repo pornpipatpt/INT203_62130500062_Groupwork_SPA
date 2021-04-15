@@ -1,6 +1,6 @@
 <template>
-  <body class="bg-blue-200 h-full" >
+  <div class="bg-blue-200 h-full" >
  <slot></slot>
-  </body>
+  </div>
     
     </template>
