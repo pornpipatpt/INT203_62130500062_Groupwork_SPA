@@ -2,7 +2,7 @@
   <nav-bar :navber="navbar" />
   <blackground>
     <p class="font-extralight   text-black text-center text-3xl ">
-      Record form detailing information and risks
+      Covid-19 Risk Assessment Form
     </p>
     <div class="w-screen h-full">
       <div class="w-full h-full md:w-1/2">
