@@ -6,255 +6,230 @@
     </p>
     <div class=" w-full">
       <div class="w-screen h-full md:w-1/2">
-       
-          
-            <form @submit.prevent="submitForm">
-              <text-box>
-                <label class="label" for="name">ชื่อของคุณ:</label>
+        <form @submit.prevent="submitForm">
+          <text-box>
+            <label class="label" for="name">ชื่อของคุณ:</label>
 
-                <input
-                  class="input"
-                  :class="{ 'bg-red-50': invalidNameInput }"
-                  id="name"
-                  type="text"
-                  v-model.trim="enteredName"
-                  @blur="validateName"
-                />
+            <input
+              class="input"
+              :class="{ 'bg-red-50': invalidNameInput }"
+              id="name"
+              type="text"
+              v-model.trim="enteredName"
+              @blur="validateName"
+            />
 
-                <p v-if="invalidNameInput" class="text-red-500">
-                  โปรดระบุชื่อของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidNameInput" class="text-red-500">
+              โปรดระบุชื่อของคุณ!
+            </p>
+          </text-box>
 
-              <text-box>
-                <label class="label" for="name">อายุของคุณ:</label>
+          <text-box>
+            <label class="label" for="name">อายุของคุณ:</label>
 
-                <input
-                  class="input"
-                  :class="{ 'bg-red-50': invalidAgeInput }"
-                  id="age"
-                  type="text"
-                  v-model.trim="enteredAge"
-                  @blur="validateAge"
-                />
+            <input
+              class="input"
+              :class="{ 'bg-red-50': invalidAgeInput }"
+              id="age"
+              type="text"
+              v-model.trim="enteredAge"
+              @blur="validateAge"
+            />
 
-                <p v-if="invalidAgeInput" class="text-red-500">
-                  โปรดระบุอายุของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidAgeInput" class="text-red-500">
+              โปรดระบุอายุของคุณ!
+            </p>
+          </text-box>
 
-              <text-box>
-                <label class="label" for="name">จังหวัดที่คุณอยู่:</label>
+          <text-box>
+            <label class="label" for="name">จังหวัดที่คุณอยู่:</label>
 
-                <input
-                  class="input"
-                  :class="{ 'bg-red-50': invalidProvinceInput }"
-                  id="province"
-                  type="text"
-                  v-model.trim="enteredProvince"
-                  @blur="validateProvince"
-                />
+            <input
+              class="input"
+              :class="{ 'bg-red-50': invalidProvinceInput }"
+              id="province"
+              type="text"
+              v-model.trim="enteredProvince"
+              @blur="validateProvince"
+            />
 
-                <p v-if="invalidProvinceInput" class="text-red-500">
-                  โปรดระบุจังหวัดของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidProvinceInput" class="text-red-500">
+              โปรดระบุจังหวัดของคุณ!
+            </p>
+          </text-box>
 
-              <text-box>
-                <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
+          <text-box>
+            <h2 class="heading">คุณได้ไปสถานที่เสี่ยงมาหรือไม่</h2>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer"
-                    id="answer-yes"
-                    value="Yes"
-                    v-model="answer"
-                  />
-                  <label class="label" for="answer-yes">Yes</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer"
+                id="answer-yes"
+                value="Yes"
+                v-model="answer"
+              />
+              <label class="label" for="answer-yes">Yes</label>
+            </div>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer"
-                    id="answer-no"
-                    value="No"
-                    v-model="answer"
-                  />
-                  <label class="label" for="answer-no">No</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer"
+                id="answer-no"
+                value="No"
+                v-model="answer"
+              />
+              <label class="label" for="answer-no">No</label>
+            </div>
 
-                <p v-if="invalidAnswerInput" class="text-red-500">
-                  โปรดระบุคำตอบของคุณ!
-                </p>
-              </text-box>
-              <text-box>
-                <h2 class="heading">
-                  คุณมีอาการปวดหัว ตัวร้อน อาเจียน หรือไม่
-                </h2>
+            <p v-if="invalidAnswerInput" class="text-red-500">
+              โปรดระบุคำตอบของคุณ!
+            </p>
+          </text-box>
+          <text-box>
+            <h2 class="heading">
+              คุณมีอาการปวดหัว ตัวร้อน อาเจียน หรือไม่
+            </h2>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer1"
-                    id="answer-yes1"
-                    value="Yes"
-                    v-model="answer1"
-                  />
-                  <label class="label" for="answer-yes1">Yes</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer1"
+                id="answer-yes1"
+                value="Yes"
+                v-model="answer1"
+              />
+              <label class="label" for="answer-yes1">Yes</label>
+            </div>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer1"
-                    id="answer-no1"
-                    value="No"
-                    v-model="answer1"
-                  />
-                  <label class="label" for="answer-no1">No</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer1"
+                id="answer-no1"
+                value="No"
+                v-model="answer1"
+              />
+              <label class="label" for="answer-no1">No</label>
+            </div>
 
-                <p v-if="invalidAnswerInput1" class="text-red-500">
-                  โปรดระบุคำตอบของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidAnswerInput1" class="text-red-500">
+              โปรดระบุคำตอบของคุณ!
+            </p>
+          </text-box>
 
-              <text-box>
-                <h2 class="heading">
-                  คุณสัมผัสใกล้ชิดกับประชาชนที่มาจากพื้นที่ที่มีรายงานการระบาดต่อเนื่องของ(COVID-19)
-                  หรือไม่ ?
-                </h2>
+          <text-box>
+            <h2 class="heading">
+              คุณสัมผัสใกล้ชิดกับประชาชนที่มาจากพื้นที่ที่มีรายงานการระบาดต่อเนื่องของ(COVID-19)
+              หรือไม่ ?
+            </h2>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer2"
-                    id="answer-yes2"
-                    value="Yes"
-                    v-model="answer2"
-                  />
-                  <label class="label" for="answer-yes2">Yes</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer2"
+                id="answer-yes2"
+                value="Yes"
+                v-model="answer2"
+              />
+              <label class="label" for="answer-yes2">Yes</label>
+            </div>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer2"
-                    id="answer-no2"
-                    value="No"
-                    v-model="answer2"
-                  />
-                  <label class="label" for="answer-no2">No</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer2"
+                id="answer-no2"
+                value="No"
+                v-model="answer2"
+              />
+              <label class="label" for="answer-no2">No</label>
+            </div>
 
-                <p v-if="invalidAnswerInput2" class="text-red-500">
-                  โปรดระบุคำตอบของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidAnswerInput2" class="text-red-500">
+              โปรดระบุคำตอบของคุณ!
+            </p>
+          </text-box>
 
-              <text-box>
-                <h2 class="heading">
-                  คุณข้าร่วมกิจกรรมที่มีผู้ชุมนุมเกิน 100 คน ในช่วงเวลา 14 วัน ก่อนหน้านี้ หรือไม่ ?
-                </h2>
+          <text-box>
+            <h2 class="heading">
+              คุณข้าร่วมกิจกรรมที่มีผู้ชุมนุมเกิน 100 คน ในช่วงเวลา 14 วัน
+              ก่อนหน้านี้ หรือไม่ ?
+            </h2>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer3"
-                    id="answer-yes3"
-                    value="Yes"
-                    v-model="answer3"
-                  />
-                  <label class="label" for="answer-yes3">Yes</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer3"
+                id="answer-yes3"
+                value="Yes"
+                v-model="answer3"
+              />
+              <label class="label" for="answer-yes3">Yes</label>
+            </div>
 
-                <div>
-                  <input
-                    type="radio"
-                    name="answer3"
-                    id="answer-no3"
-                    value="No"
-                    v-model="answer3"
-                  />
-                  <label class="label" for="answer-no3">No</label>
-                </div>
+            <div>
+              <input
+                type="radio"
+                name="answer3"
+                id="answer-no3"
+                value="No"
+                v-model="answer3"
+              />
+              <label class="label" for="answer-no3">No</label>
+            </div>
 
-                <p v-if="invalidAnswerInput3" class="text-red-500">
-                  โปรดระบุคำตอบของคุณ!
-                </p>
-              </text-box>
+            <p v-if="invalidAnswerInput3" class="text-red-500">
+              โปรดระบุคำตอบของคุณ!
+            </p>
+          </text-box>
 
-              <button class="btn">
-                Submit
-              </button>
-            </form>
-          
-          <!-- <text-box>
-            <ul v-for="survey in surveyResults" :key="survey.id">
-              <li>
-                <span>{{ survey.name }}</span>
-                อายุของคุณคือ
-                <span>{{ survey.age }}</span>
-                จังหวัดที่คุณอยู่คือ
-                <span>{{ survey.province }}</span>
-                คำตอบของคุณคือ
-                <span> {{ survey.answer }}</span>,
-                <span> {{ survey.answer1 }}</span>,
-                <span> {{ survey.answer2 }}</span>,
-                <span> {{ survey.answer3 }}</span>
-                <button @click="showIfm(survey)" class="bg-green-100 m-1">
-                  <img src="@/assets/edit.png" alt="" />
-                </button>
-                <button @click="deleteIfm(survey.id)" class="bg-red-100 m-1">
-                  <img src="@/assets/delete.png" alt="" />
-                </button>
-              </li>
-            </ul>
-
-          </text-box> -->
-          
-        
-
+          <button class="btn">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
-    
-     <table class="table-fixed border pl-8 ml-72 border-blue-300 rounded-xl shadow p-2 my-8  ">
-           <thead>
-              <tr class="text-white bg-blue-800 text-sm">
-                <th class="w-24  ">Name</th>
-                <th class="w-24 ">Age</th>
-                <th class="w-24 ">Province</th>
-                <th class="w-24 ">Answer1</th>
-                <th class="w-24 ">Answer2</th>
-                <th class="w-24 ">Answer3</th>
-                <th class="w-24 ">Answer4</th>
-                <th></th>
-              </tr>
-             <tr  class="bg-blue-100" v-for="survey in surveyResults" :key="survey.id">
-               <td>{{ survey.name }}</td>
-               <td>{{ survey.age }}</td>
-               <td>{{ survey.province }}</td>
-               <td>{{ survey.answer }}</td>
-               <td>{{ survey.answer1 }}</td>
-               <td>{{ survey.answer2 }}</td>
-               <td>{{ survey.answer3 }}</td>
-               <td>
-                <button @click="showIfm(survey)" class="bg-green-100 m-1">
-                  <img src="@/assets/edit.png" alt="" />
-                </button>
-                <button @click="deleteIfm(survey.id)" class="bg-red-100 m-1">
-                  <img src="@/assets/delete.png" alt="" />
-                </button>
-               </td>
-            </tr> 
-            
-            </thead>
-          </table>
-         
-  </blackground>
 
+    <table
+      class="table-fixed border pl-8 ml-72 border-blue-300 rounded-xl shadow p-2 my-8  "
+    >
+      <thead>
+        <tr class="text-white bg-blue-800 text-sm">
+          <th class="w-24  ">Name</th>
+          <th class="w-24 ">Age</th>
+          <th class="w-24 ">Province</th>
+          <th class="w-24 ">Answer1</th>
+          <th class="w-24 ">Answer2</th>
+          <th class="w-24 ">Answer3</th>
+          <th class="w-24 ">Answer4</th>
+          <th></th>
+        </tr>
+        <tr
+          class="bg-blue-100"
+          v-for="survey in surveyResults"
+          :key="survey.id"
+        >
+          <td>{{ survey.name }}</td>
+          <td>{{ survey.age }}</td>
+          <td>{{ survey.province }}</td>
+          <td>{{ survey.answer }}</td>
+          <td>{{ survey.answer1 }}</td>
+          <td>{{ survey.answer2 }}</td>
+          <td>{{ survey.answer3 }}</td>
+          <td>
+            <button @click="showIfm(survey)" class="bg-green-100 m-1">
+              <img src="@/assets/edit.png" alt="" />
+            </button>
+            <button @click="deleteIfm(survey.id)" class="bg-red-100 m-1">
+              <img src="@/assets/delete.png" alt="" />
+            </button>
+          </td>
+        </tr>
+      </thead>
+    </table>
+  </blackground>
 </template>
 
 <script>
@@ -297,8 +272,6 @@ export default {
       this.invalidAnswerInput2 = this.answer2 === null ? true : false;
       this.invalidAnswerInput3 = this.answer3 === null ? true : false;
 
-      
-
       if (
         this.enteredName !== "" &&
         this.enteredAge !== "" &&
@@ -306,7 +279,7 @@ export default {
         this.answer !== null &&
         this.answer1 !== null &&
         this.answer2 !== null &&
-        this.answer3 !== null 
+        this.answer3 !== null
       ) {
         if (this.isEdit) {
           this.editIfm({
