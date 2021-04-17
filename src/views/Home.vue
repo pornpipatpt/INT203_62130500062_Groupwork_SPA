@@ -4,10 +4,10 @@
     <p class="font-extralight   text-black text-center text-3xl ">
       Covid-19 Risk Assessment Form
     </p>
-    <div class="w-screen h-full">
-      <div class="w-full h-full md:w-1/2">
-        <div class="container">
-          <div class="survey-container">
+    <div class=" w-full">
+      <div class="w-screen h-full md:w-1/2">
+       
+          
             <form @submit.prevent="submitForm">
               <text-box>
                 <label class="label" for="name">ชื่อของคุณ:</label>
@@ -190,8 +190,8 @@
                 Submit
               </button>
             </form>
-          </div>
-          <text-box>
+          
+          <!-- <text-box>
             <ul v-for="survey in surveyResults" :key="survey.id">
               <li>
                 <span>{{ survey.name }}</span>
@@ -212,11 +212,49 @@
                 </button>
               </li>
             </ul>
-          </text-box>
-        </div>
+
+          </text-box> -->
+          
+        
+
       </div>
     </div>
+    
+     <table class="table-fixed border pl-8 ml-72 border-blue-300 rounded-xl shadow p-2 my-8  ">
+           <thead>
+              <tr class="text-white bg-blue-800 text-sm">
+                <th class="w-24  ">Name</th>
+                <th class="w-24 ">Age</th>
+                <th class="w-24 ">Province</th>
+                <th class="w-24 ">Answer1</th>
+                <th class="w-24 ">Answer2</th>
+                <th class="w-24 ">Answer3</th>
+                <th class="w-24 ">Answer4</th>
+                <th></th>
+              </tr>
+             <tr  class="bg-blue-100" v-for="survey in surveyResults" :key="survey.id">
+               <td>{{ survey.name }}</td>
+               <td>{{ survey.age }}</td>
+               <td>{{ survey.province }}</td>
+               <td>{{ survey.answer }}</td>
+               <td>{{ survey.answer1 }}</td>
+               <td>{{ survey.answer2 }}</td>
+               <td>{{ survey.answer3 }}</td>
+               <td>
+                <button @click="showIfm(survey)" class="bg-green-100 m-1">
+                  <img src="@/assets/edit.png" alt="" />
+                </button>
+                <button @click="deleteIfm(survey.id)" class="bg-red-100 m-1">
+                  <img src="@/assets/delete.png" alt="" />
+                </button>
+               </td>
+            </tr> 
+            
+            </thead>
+          </table>
+         
   </blackground>
+
 </template>
 
 <script>
@@ -259,20 +297,7 @@ export default {
       this.invalidAnswerInput2 = this.answer2 === null ? true : false;
       this.invalidAnswerInput3 = this.answer3 === null ? true : false;
 
-      console.log(`name value: ${this.enteredName}`);
-      console.log(`invalid name: ${this.invalidNameInput}`);
-      console.log(`age value: ${this.enteredAge}`);
-      console.log(`invalid age: ${this.invalidAgeInput}`);
-      console.log(`province value: ${this.enteredProvince}`);
-      console.log(`invalid province: ${this.invalidProvinceInput}`);
-      console.log(`answer value: ${this.answer}`);
-      console.log(`invalid answer: ${this.invalidAnswerInput}`);
-      console.log(`answer1 value: ${this.answer1}`);
-      console.log(`invalid1 answer: ${this.invalidAnswerInput1}`);
-      console.log(`answer1 value: ${this.answer2}`);
-      console.log(`invalid1 answer: ${this.invalidAnswerInput2}`);
-      console.log(`answer1 value: ${this.answer3}`);
-      console.log(`invalid1 answer: ${this.invalidAnswerInput3}`);
+      
 
       if (
         this.enteredName !== "" &&

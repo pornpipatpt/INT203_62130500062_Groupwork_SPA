@@ -5,20 +5,30 @@
       "age": "24",
       "province": "ระนอง",
       "answer": "Yes",
-      "answer1": "No",
-      "answer2": "Yes",
+      "answer1": "Yes",
+      "answer2": "No",
       "answer3": "Yes",
       "id": 1
     },
     {
-      "name": "boat",
+      "name": "Lee",
       "age": "12",
-      "province": "ระยอง",
+      "province": "กรุงเทพ",
+      "answer": "Yes",
+      "answer1": "No",
+      "answer2": "No",
+      "answer3": "Yes",
+      "id": 2
+    },
+    {
+      "name": "Cue",
+      "age": "15",
+      "province": "ชลบุรี",
       "answer": "Yes",
       "answer1": "Yes",
       "answer2": "Yes",
-      "answer3": "No",
-      "id": 2
+      "answer3": "Yes",
+      "id": 3
     }
   ]
 }
